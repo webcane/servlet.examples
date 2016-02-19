@@ -23,6 +23,7 @@
     <maven.compiler.source>1.7</maven.compiler.source>
   </properties>
   <build>
+  	<!-- задаем конечное имя, чтобы не добавлять номер версии в  конец автоматом -->
     <finalName>servlet-test</finalName>
     <plugins>
 		
