@@ -15,7 +15,7 @@
  2. start tomcat - для запуска установленного tomcat из под eclipse
  3. [tomcat-deploy](http://tomcat.apache.org/maven-plugin-2.0/tomcat7-maven-plugin/deploy-mojo.html) - для деплоя на tomcat из Eclipse
 
-
+ 
 ## servlet-vogella
 Пример простого сервлета от [vogella](http://www.vogella.com/tutorials/EclipseWTP/article.html)
 * путь доступа к сервлету
@@ -26,3 +26,32 @@
  - project > export > to WAR
 * tomcat 7
  - интеграция сервера с Eclipse из коробки
+ 
+ 
+## jersey-ws
+Пример сервлета ~3.0 без использования web.xml. 
+```#java
+@ApplicationPath("/rest")
+public class RestApplication extends ResourceConfig {
+	public RestApplication() {
+        packages("cane.brothers.jersey.web");
+    }
+}
+```
+Имплементация web-сервиса на [jersey](https://jersey.java.net/). 
+```java
+@Path("hello")
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getIt() {
+        return "Got it!";
+    }
+}
+```
+* путь доступа к сервлету
+ `http://localhost:9090/jersey-ws/`
+* путь до веб-сервиса
+ `http://localhost:9090/jersey-ws/rest/hello`
+* Проект подключает либы через мавен.
+* деплоится на сервер [Glassfish](https://glassfish.java.net/) не через maven, а напрямую. В Eclipse:
+ - `Run As > Run on Server`
