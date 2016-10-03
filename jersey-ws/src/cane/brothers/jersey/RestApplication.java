@@ -13,10 +13,6 @@ import cane.brothers.jersey.web.HelloResource;
 @ApplicationPath("/rest")
 public class RestApplication extends ResourceConfig {
 	public RestApplication() {
-		//register resources
-		register(HelloResource.class);
-		
-		// enable Jackson JAX-B-JSON providers
-		register(JacksonJaxbJsonProvider.class);
+		super(JacksonJaxbJsonProvider.class, HelloResource.class);
     }
 }

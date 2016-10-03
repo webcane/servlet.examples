@@ -1,6 +1,8 @@
 package cane.brothers.jersey.web;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -17,5 +19,11 @@ public class HelloResource {
     @Produces(MediaType.APPLICATION_JSON)
     public HelloBinding getAgamemnon() {
         return new HelloBinding("Agamemnon", 32);
+    }
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void setHello(HelloBinding hello) {
+        System.out.println("hello " + hello);
     }
 }
